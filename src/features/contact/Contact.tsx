@@ -5,6 +5,7 @@ import ScrollReveal from '../../components/ScrollReveal';
 import GlassCard from '../../components/GlassCard';
 import { Mail, Linkedin, Github, Send, CheckCircle, AlertCircle, X } from 'lucide-react';
 import emailjs from '@emailjs/browser';
+import { supabase } from '../../lib/supabase';
 
 export default function Contact() {
   const formRef = useRef<HTMLFormElement>(null);
@@ -25,17 +26,29 @@ export default function Contact() {
     setStatus('sending');
 
     try {
-      // Replace these with your EmailJS credentials
-      await emailjs.sendForm(
+      // 1. Send via EmailJS (so you get the email notification)
+      const emailPromise = emailjs.sendForm(
         'service_ny2pqdp',   // Replace with your EmailJS service ID
         'template_ovlh6st',  // Replace with your EmailJS template ID
         formRef.current!,
-        'NFVi6cMwXiMO8HYPR'    // Replace with your EmailJS public key
+        'NFVi6cMwXiMO8HYPR'  // Replace with your EmailJS public key
       );
+
+      // 2. Save to Supabase (so you can view it on Admin Dashboard)
+      const supabasePromise = supabase?.from('contact_messages').insert([{
+        name: formData.name,
+        email: formData.email,
+        subject: formData.subject,
+        message: formData.message,
+      }]);
+
+      await Promise.all([emailPromise, supabasePromise]);
+      
       setStatus('sent');
       setFormData({ name: '', email: '', subject: '', message: '' });
       setTimeout(() => setStatus('idle'), 5000);
-    } catch {
+    } catch (err) {
+      console.error('Failed to send message:', err);
       setStatus('error');
       setTimeout(() => setStatus('idle'), 5000);
     }

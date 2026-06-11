@@ -2,6 +2,7 @@ import { motion } from 'framer-motion';
 import { TypeAnimation } from 'react-type-animation';
 import { ArrowDown, FileText, Mail, Code2, Database, Cloud, Brain, Server, Shield, Cpu } from 'lucide-react';
 import InteractiveTerminal from './InteractiveTerminal';
+import { trackResumeDownload } from '../../hooks/useTracking';
 
 const floatingIcons = [
   { Icon: Code2, x: '10%', y: '20%', delay: 0 },
@@ -132,7 +133,7 @@ export default function Hero() {
               View Projects
               <ArrowDown size={16} />
             </button>
-            <a href="/resume.pdf" download className="btn btn--outline">
+            <a href="/resume.pdf" download className="btn btn--outline" onClick={trackResumeDownload}>
               <FileText size={16} />
               Download Resume
             </a>
