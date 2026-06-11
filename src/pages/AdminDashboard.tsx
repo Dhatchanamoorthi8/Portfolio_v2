@@ -58,7 +58,21 @@ export default function AdminDashboard() {
     }
   }, [isAuthenticated]);
 
-  const getStoredPin = () => localStorage.getItem('admin_pin') || '1234';
+  const fetchAdminPin = async () => {
+    if (!supabase) return '1234';
+    try {
+      const { data, error } = await supabase
+        .from('admin_settings')
+        .select('value')
+        .eq('key', 'admin_pin')
+        .single();
+      
+      if (error || !data) return '1234';
+      return data.value;
+    } catch {
+      return '1234';
+    }
+  };
 
   const fetchAllData = async () => {
     setLoading(true);
@@ -95,9 +109,11 @@ export default function AdminDashboard() {
     }
   };
 
-  const handleLogin = (e: React.FormEvent) => {
+  const handleLogin = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (pin === getStoredPin()) {
+    const correctPin = await fetchAdminPin();
+    
+    if (pin === correctPin) {
       setIsAuthenticated(true);
       sessionStorage.setItem('admin_auth', 'true');
     } else {
@@ -111,16 +127,33 @@ export default function AdminDashboard() {
     sessionStorage.removeItem('admin_auth');
   };
 
-  const handleUpdatePin = (e: React.FormEvent) => {
+  const handleUpdatePin = async (e: React.FormEvent) => {
     e.preventDefault();
     if (newPin.trim().length < 4) {
       alert('Password must be at least 4 characters');
       return;
     }
-    localStorage.setItem('admin_pin', newPin);
-    alert('Password updated successfully!');
-    setNewPin('');
-    setIsUpdatingPin(false);
+    
+    if (!supabase) {
+      alert('Supabase is not connected');
+      return;
+    }
+
+    try {
+      const { error } = await supabase
+        .from('admin_settings')
+        .update({ value: newPin })
+        .eq('key', 'admin_pin');
+
+      if (error) throw error;
+      
+      alert('Password updated successfully!');
+      setNewPin('');
+      setIsUpdatingPin(false);
+    } catch (err) {
+      console.error('Error updating password:', err);
+      alert('Failed to update password in database.');
+    }
   };
 
   const inputStyle = {
