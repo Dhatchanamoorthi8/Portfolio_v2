@@ -42,9 +42,9 @@ export default function Contact() {
   };
 
   const socials = [
-    { icon: Mail, label: 'Email', href: 'mailto:your@email.com', value: 'your@email.com' },
-    { icon: Linkedin, label: 'LinkedIn', href: 'https://linkedin.com/in/yourprofile', value: 'linkedin.com/in/yourprofile' },
-    { icon: Github, label: 'GitHub', href: 'https://github.com/yourprofile', value: 'github.com/yourprofile' },
+    { icon: Mail, label: 'Email', href: 'mailto:messagetomoorthi@gmail.com', value: 'messagetomoorthi@gmail.com' },
+    { icon: Linkedin, label: 'LinkedIn', href: 'https://www.linkedin.com/in/dhatchanamoorthi-ap/', value: 'linkedin.com/in/dhatchanamoorthi-ap', target: '_blank' },
+    { icon: Github, label: 'GitHub', href: 'https://github.com/Dhatchanamoorthi8', value: 'github.com/Dhatchanamoorthi8', target: '_blank' },
   ];
 
   return (
@@ -144,7 +144,7 @@ export default function Contact() {
                 <motion.a
                   key={social.label}
                   href={social.href}
-                  target="_blank"
+                  target={social.target}
                   rel="noopener noreferrer"
                   className="contact__social"
                   whileHover={{ x: 5 }}
@@ -205,12 +205,12 @@ export default function Contact() {
                 {status === 'sent' ? 'Message Sent Successfully' : 'Failed to Send Message'}
               </h4>
               <p style={{ margin: 0, fontSize: '0.85rem', color: '#a1a1aa', marginTop: '2px' }}>
-                {status === 'sent' 
-                  ? 'I will get back to you as soon as possible.' 
+                {status === 'sent'
+                  ? 'I will get back to you as soon as possible.'
                   : 'Please check your EmailJS configuration.'}
               </p>
             </div>
-            <button 
+            <button
               onClick={() => setStatus('idle')}
               style={{ marginLeft: 'auto', padding: '4px', background: 'transparent', border: 'none', color: '#a1a1aa', cursor: 'pointer', display: 'flex' }}
             >

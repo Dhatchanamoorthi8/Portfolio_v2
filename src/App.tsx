@@ -4,6 +4,8 @@ import Navbar from './components/Navbar';
 import ThemeCustomizer from './components/ThemeCustomizer';
 import Footer from './components/Footer';
 import Hero from './features/hero/Hero';
+import ScrollProgress from './components/ScrollProgress';
+import VisitorEngagement from './components/VisitorEngagement';
 
 // Lazy load sections for performance
 const About = lazy(() => import('./features/about/About'));
@@ -39,6 +41,7 @@ export default function App() {
 
   return (
     <>
+      <ScrollProgress />
       <Navbar />
       <ThemeCustomizer />
       <main>
@@ -72,6 +75,7 @@ export default function App() {
         </Suspense>
       </main>
       <Footer />
+      <VisitorEngagement />
     </>
   );
 }

@@ -1,6 +1,7 @@
 import { motion } from 'framer-motion';
 import { TypeAnimation } from 'react-type-animation';
 import { ArrowDown, FileText, Mail, Code2, Database, Cloud, Brain, Server, Shield, Cpu } from 'lucide-react';
+import InteractiveTerminal from './InteractiveTerminal';
 
 const floatingIcons = [
   { Icon: Code2, x: '10%', y: '20%', delay: 0 },
@@ -10,23 +11,6 @@ const floatingIcons = [
   { Icon: Server, x: '90%', y: '45%', delay: 0.8 },
   { Icon: Shield, x: '5%', y: '50%', delay: 1.2 },
   { Icon: Cpu, x: '50%', y: '10%', delay: 0.3 },
-];
-
-const codeLines = [
-  '@Controller("api/calibration")',
-  'export class CalibrationController {',
-  '  constructor(',
-  '    private readonly service: CalibrationService,',
-  '  ) {}',
-  '',
-  '  @Post("generate-certificate")',
-  '  @UseGuards(RBACGuard)',
-  '  async generateCertificate(',
-  '    @Body() dto: CertificateDto,',
-  '  ) {',
-  '    return this.service.generate(dto);',
-  '  }',
-  '}',
 ];
 
 export default function Hero() {
@@ -45,6 +29,7 @@ export default function Hero() {
         <div className="hero__orb hero__orb--1" />
         <div className="hero__orb hero__orb--2" />
         <div className="hero__orb hero__orb--3" />
+        <div className="hero__particles" />
       </div>
 
       {/* Floating tech icons */}
@@ -101,11 +86,11 @@ export default function Hero() {
               sequence={[
                 'Full Stack Developer',
                 2000,
-                'SaaS Builder',
+                'AI-Powered Builder',
                 2000,
-                'AI-Powered Developer',
+                'SaaS Architect',
                 2000,
-                'Enterprise Solutions Architect',
+                'Enterprise Solutions Developer',
                 2000,
               ]}
               wrapper="span"
@@ -121,9 +106,21 @@ export default function Hero() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.6 }}
           >
-            Full Stack Developer specializing in scalable web applications, workflow automation,
-            cloud deployments, and AI integration.
+            Full Stack Developer at <strong>Iviewsense</strong> — specializing in scalable web applications, 
+            workflow automation, cloud deployments, and AI-powered development.
           </motion.p>
+
+          {/* Built with AI badge */}
+          <motion.div
+            className="hero__ai-badge"
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 1 }}
+          >
+            <span className="hero__ai-badge-shimmer" />
+            <Brain size={14} />
+            <span>Building with AI — Gemini · Claude · ChatGPT · Antigravity</span>
+          </motion.div>
 
           <motion.div
             className="hero__ctas"
@@ -146,39 +143,8 @@ export default function Hero() {
           </motion.div>
         </div>
 
-        {/* Live code animation */}
-        <motion.div
-          className="hero__code"
-          initial={{ opacity: 0, x: 40 }}
-          animate={{ opacity: 1, x: 0 }}
-          transition={{ delay: 1, duration: 0.8 }}
-        >
-          <div className="hero__code-window">
-            <div className="hero__code-header">
-              <div className="hero__code-dots">
-                <span /><span /><span />
-              </div>
-              <span className="hero__code-filename">calibration.controller.ts</span>
-            </div>
-            <div className="hero__code-body">
-              {codeLines.map((line, i) => (
-                <motion.div
-                  key={i}
-                  className="hero__code-line"
-                  initial={{ opacity: 0, x: 20 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  transition={{ delay: 1.2 + i * 0.1 }}
-                >
-                  <span className="hero__code-num">{i + 1}</span>
-                  <span
-                    className="hero__code-text"
-                    dangerouslySetInnerHTML={{ __html: highlightCode(line) }}
-                  />
-                </motion.div>
-              ))}
-            </div>
-          </div>
-        </motion.div>
+        {/* Interactive Terminal replaces static code block */}
+        <InteractiveTerminal />
       </div>
 
       {/* Scroll indicator */}
@@ -196,25 +162,5 @@ export default function Hero() {
         </motion.div>
       </motion.div>
     </section>
-  );
-}
-
-function highlightCode(line: string): string {
-  let html = line.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
-  
-  return html.replace(
-    /(@\w+|"[^"]*"|\/\/.*$|\b(?:export|class|constructor|private|readonly|async|return|const)\b|\b(?:string|number|boolean|void)\b|\b(?:CalibrationController|CalibrationService|CertificateDto|RBACGuard)\b)/g,
-    (match) => {
-      if (match.startsWith('@')) return `<span class="code--decorator">${match}</span>`;
-      if (match.startsWith('"')) return `<span class="code--string">${match}</span>`;
-      if (match.startsWith('//')) return `<span class="code--comment">${match}</span>`;
-      if (/^(export|class|constructor|private|readonly|async|return|const)$/.test(match)) {
-        return `<span class="code--keyword">${match}</span>`;
-      }
-      if (/^(string|number|boolean|void)$/.test(match)) {
-        return `<span class="code--type">${match}</span>`;
-      }
-      return `<span class="code--class">${match}</span>`;
-    }
   );
 }

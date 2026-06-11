@@ -2076,6 +2076,496 @@ button {
 }
 
 /* ============================================================
+   SCROLL PROGRESS BAR
+   ============================================================ */
+
+.scroll-progress {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  z-index: 200;
+  background: transparent;
+}
+
+.scroll-progress__bar {
+  height: 100%;
+  background: linear-gradient(90deg, var(--accent), var(--accent-secondary), var(--accent-bright));
+  transition: width 0.1s linear;
+  border-radius: 0 2px 2px 0;
+  box-shadow: 0 0 10px var(--accent-glow), 0 0 30px var(--accent-glow);
+}
+
+/* ============================================================
+   VISITOR ENGAGEMENT WIDGET
+   ============================================================ */
+
+.visitor-engagement {
+  position: fixed;
+  bottom: 24px;
+  left: 24px;
+  z-index: 90;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 16px;
+  border-radius: 100px;
+  background: rgba(22, 22, 29, 0.9);
+  border: 1px solid var(--glass-border);
+  backdrop-filter: blur(20px);
+  font-size: 0.78rem;
+  color: var(--text-secondary);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+}
+
+.visitor-engagement__timer,
+.visitor-engagement__milestone {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.visitor-engagement__milestone {
+  color: var(--accent);
+  font-weight: 500;
+}
+
+.visitor-engagement__close {
+  width: 20px;
+  height: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  font-size: 14px;
+  color: var(--text-muted);
+  transition: all 0.3s;
+  margin-left: 4px;
+}
+
+.visitor-engagement__close:hover {
+  background: rgba(255, 255, 255, 0.08);
+  color: var(--text-primary);
+}
+
+/* ============================================================
+   INTERACTIVE TERMINAL
+   ============================================================ */
+
+.interactive-terminal {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.interactive-terminal__window {
+  width: 100%;
+  max-width: 520px;
+  border-radius: 14px;
+  overflow: hidden;
+  background: rgba(12, 12, 16, 0.92);
+  border: 1px solid var(--border);
+  backdrop-filter: blur(10px);
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+}
+
+.interactive-terminal__header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 16px;
+  border-bottom: 1px solid var(--border);
+  background: rgba(255, 255, 255, 0.02);
+}
+
+.interactive-terminal__dots {
+  display: flex;
+  gap: 6px;
+}
+
+.interactive-terminal__dots span {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: var(--border-hover);
+}
+
+.interactive-terminal__dots span:first-child { background: #ff5f56; }
+.interactive-terminal__dots span:nth-child(2) { background: #ffbd2e; }
+.interactive-terminal__dots span:last-child { background: #27c93f; }
+
+.interactive-terminal__title {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  color: var(--text-muted);
+}
+
+.interactive-terminal__body {
+  padding: 16px;
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  line-height: 1.8;
+  max-height: 340px;
+  overflow-y: auto;
+}
+
+.interactive-terminal__line {
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+
+.interactive-terminal__line--command {
+  color: var(--text-primary);
+}
+
+.interactive-terminal__line--output {
+  color: var(--text-secondary);
+}
+
+.interactive-terminal__line--success {
+  color: #4ade80;
+}
+
+.interactive-terminal__line--info {
+  color: var(--text-muted);
+  font-size: 0.72rem;
+}
+
+.interactive-terminal__input-line {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin-top: 8px;
+}
+
+.interactive-terminal__prompt {
+  color: var(--accent);
+  font-weight: 600;
+}
+
+.interactive-terminal__input {
+  flex: 1;
+  background: transparent;
+  border: none;
+  outline: none;
+  color: var(--text-primary);
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  caret-color: var(--accent);
+}
+
+.interactive-terminal__input::placeholder {
+  color: var(--text-muted);
+  opacity: 0.5;
+}
+
+.interactive-terminal__cursor {
+  width: 8px;
+  height: 16px;
+  background: var(--accent);
+  border-radius: 1px;
+  transition: opacity 0.1s;
+}
+
+/* ============================================================
+   HERO AI BADGE
+   ============================================================ */
+
+.hero__ai-badge {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 18px;
+  border-radius: 100px;
+  font-size: 0.78rem;
+  color: var(--accent-bright);
+  background: hsl(var(--accent-hue), var(--accent-sat), 55% / 0.08);
+  border: 1px solid hsl(var(--accent-hue), var(--accent-sat), 55% / 0.2);
+  overflow: hidden;
+  width: fit-content;
+}
+
+.hero__ai-badge strong {
+  font-weight: 600;
+}
+
+.hero__ai-badge-shimmer {
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.05), transparent);
+  animation: shimmer 3s ease-in-out infinite;
+}
+
+@keyframes shimmer {
+  0% { left: -100%; }
+  100% { left: 100%; }
+}
+
+/* Hero particles */
+.hero__particles {
+  position: absolute;
+  inset: 0;
+  background-image: radial-gradient(circle, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+  background-size: 30px 30px;
+  mask-image: radial-gradient(ellipse 60% 50% at 50% 50%, black 30%, transparent 70%);
+  animation: particleDrift 20s linear infinite;
+}
+
+@keyframes particleDrift {
+  0% { transform: translateY(0); }
+  100% { transform: translateY(-30px); }
+}
+
+/* ============================================================
+   AI WORKFLOW PIPELINE
+   ============================================================ */
+
+.ai-workflow {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0;
+  margin-bottom: 48px;
+  max-width: 900px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.ai-workflow__step {
+  display: flex;
+  align-items: center;
+  gap: 0;
+  flex: 1;
+  min-width: 0;
+}
+
+.ai-workflow__card {
+  padding: 20px 16px;
+  border-radius: 16px;
+  background: var(--glass-bg);
+  border: 1px solid var(--glass-border);
+  backdrop-filter: blur(10px);
+  text-align: center;
+  width: 100%;
+  transition: all 0.3s var(--ease-out);
+  cursor: default;
+}
+
+.ai-workflow__card:hover {
+  border-color: var(--border-accent);
+  box-shadow: 0 8px 30px var(--accent-glow);
+}
+
+.ai-workflow__emoji {
+  font-size: 1.8rem;
+  display: block;
+  margin-bottom: 10px;
+}
+
+.ai-workflow__card h4 {
+  font-size: 0.85rem;
+  font-weight: 600;
+  margin-bottom: 4px;
+}
+
+.ai-workflow__card p {
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  line-height: 1.5;
+}
+
+.ai-workflow__arrow {
+  padding: 0 8px;
+  color: var(--accent);
+  opacity: 0.5;
+  transform-origin: left;
+}
+
+/* ============================================================
+   AI TABS
+   ============================================================ */
+
+.ai-tabs {
+  display: flex;
+  gap: 8px;
+  justify-content: center;
+  margin-bottom: 32px;
+}
+
+.ai-tabs__btn {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 20px;
+  border-radius: 10px;
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: var(--text-secondary);
+  border: 1px solid var(--border);
+  transition: all 0.3s var(--ease-out);
+}
+
+.ai-tabs__btn:hover {
+  color: var(--text-primary);
+  border-color: var(--border-hover);
+}
+
+.ai-tabs__btn--active {
+  color: var(--accent);
+  border-color: var(--accent);
+  background: hsl(var(--accent-hue), var(--accent-sat), 55% / 0.08);
+}
+
+/* ============================================================
+   AI TOOLKIT CARDS
+   ============================================================ */
+
+.ai-toolkit {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+.ai-toolkit__card {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 24px;
+  border-radius: 16px;
+  background: var(--glass-bg);
+  border: 1px solid var(--glass-border);
+  backdrop-filter: blur(10px);
+  transition: all 0.3s var(--ease-out);
+  overflow: hidden;
+  cursor: default;
+}
+
+.ai-toolkit__card:hover {
+  border-color: color-mix(in srgb, var(--tool-color, var(--accent)) 40%, transparent);
+  box-shadow: 0 8px 30px color-mix(in srgb, var(--tool-color, var(--accent)) 15%, transparent);
+}
+
+.ai-toolkit__icon {
+  width: 48px;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 12px;
+  background: color-mix(in srgb, var(--tool-color, var(--accent)) 10%, transparent);
+  flex-shrink: 0;
+}
+
+.ai-toolkit__info h4 {
+  font-size: 1rem;
+  font-weight: 600;
+  margin-bottom: 4px;
+}
+
+.ai-toolkit__info p {
+  font-size: 0.78rem;
+  color: var(--text-muted);
+  line-height: 1.5;
+}
+
+.ai-toolkit__glow {
+  position: absolute;
+  top: -50%;
+  right: -50%;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(circle, color-mix(in srgb, var(--tool-color, var(--accent)) 8%, transparent), transparent 70%);
+  pointer-events: none;
+}
+
+/* ============================================================
+   AI BUILDER BADGE
+   ============================================================ */
+
+.ai-builder-badge {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 16px 28px;
+  border-radius: 100px;
+  background: hsl(var(--accent-hue), var(--accent-sat), 55% / 0.05);
+  border: 1px solid hsl(var(--accent-hue), var(--accent-sat), 55% / 0.15);
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+  margin-top: 48px;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.ai-builder-badge strong {
+  color: var(--accent);
+}
+
+.ai-builder-badge svg {
+  color: var(--accent);
+  flex-shrink: 0;
+}
+
+/* ============================================================
+   PROJECT AI BADGE
+   ============================================================ */
+
+.project-card__ai-badge {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 12px;
+  border-radius: 6px;
+  font-size: 0.7rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: #a78bfa;
+  background: rgba(167, 139, 250, 0.1);
+  border: 1px solid rgba(167, 139, 250, 0.2);
+  overflow: hidden;
+  width: fit-content;
+}
+
+.project-card__ai-badge-shimmer {
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(167, 139, 250, 0.15), transparent);
+  animation: shimmer 2.5s ease-in-out infinite;
+}
+
+/* ============================================================
+   EXPERIENCE COMPANY
+   ============================================================ */
+
+.experience__company {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 6px;
+  color: var(--accent);
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+.experience__company svg {
+  opacity: 0.7;
+}
+
+/* ============================================================
    RESPONSIVE
    ============================================================ */
 
@@ -2097,7 +2587,7 @@ button {
     justify-content: center;
   }
 
-  .hero__code {
+  .interactive-terminal {
     display: none;
   }
 
@@ -2115,6 +2605,20 @@ button {
 
   .ai__grid {
     grid-template-columns: 1fr;
+  }
+
+  .ai-toolkit {
+    grid-template-columns: 1fr;
+  }
+
+  .ai-workflow {
+    flex-direction: column;
+    gap: 0;
+  }
+
+  .ai-workflow__arrow {
+    transform: rotate(90deg);
+    padding: 4px 0;
   }
 
   .skills__grid {
@@ -2170,6 +2674,11 @@ button {
     justify-content: center;
   }
 
+  .hero__ai-badge {
+    font-size: 0.7rem;
+    padding: 6px 14px;
+  }
+
   .about__stats {
     grid-template-columns: repeat(2, 1fr);
     gap: 12px;
@@ -2217,4 +2726,25 @@ button {
     padding: 8px 14px;
     font-size: 0.78rem;
   }
+
+  .ai-workflow__card {
+    min-width: 130px;
+    padding: 16px 14px;
+  }
+
+  .ai-tabs {
+    flex-wrap: wrap;
+  }
+
+  .ai-toolkit {
+    grid-template-columns: 1fr;
+  }
+
+  .visitor-engagement {
+    bottom: 16px;
+    left: 16px;
+    right: 16px;
+    justify-content: center;
+  }
 }
+

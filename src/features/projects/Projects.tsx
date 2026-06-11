@@ -5,7 +5,7 @@ import ScrollReveal from '../../components/ScrollReveal';
 import GlassCard from '../../components/GlassCard';
 import TechBadge from '../../components/TechBadge';
 import { projects } from '../../data/portfolio';
-import { ChevronRight, X, Layers, Zap } from 'lucide-react';
+import { ChevronRight, X, Layers, Zap, Bot } from 'lucide-react';
 
 const filters = [
   { key: 'all', label: 'All Projects' },
@@ -66,6 +66,13 @@ export default function Projects() {
                     {project.category === 'enterprise' ? <Layers size={14} /> : <Zap size={14} />}
                     {project.category}
                   </div>
+                  {project.aiTools && project.aiTools.length > 0 && (
+                    <div className="project-card__ai-badge">
+                      <Bot size={12} />
+                      <span>Built with AI</span>
+                      <div className="project-card__ai-badge-shimmer" />
+                    </div>
+                  )}
                   <h3 className="project-card__title">{project.title}</h3>
                   <p className="project-card__subtitle">{project.subtitle}</p>
                   <p className="project-card__desc">{project.description}</p>

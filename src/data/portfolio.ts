@@ -1,4 +1,4 @@
-import type { Project, SkillGroup, Experience, Service } from '../types';
+import type { Project, SkillGroup, Experience, Service, AITool } from '../types';
 
 export const projects: Project[] = [
   {
@@ -18,6 +18,7 @@ export const projects: Project[] = [
       'Advanced reporting engine',
     ],
     category: 'enterprise',
+    aiTools: ['Gemini', 'ChatGPT'],
     architectureNodes: [
       { label: 'React SPA', description: 'TypeScript + Ant Design frontend' },
       { label: 'API Gateway', description: 'NestJS controllers with guards' },
@@ -76,8 +77,7 @@ export const projects: Project[] = [
       'Streaming Conversational UI',
     ],
     category: 'ai',
-    demoUrl: 'https://ai-doc-assistant-your-deployment.vercel.app',
-    githubUrl: 'https://github.com/yourusername/ai-doc-assistant',
+    aiTools: ['Claude', 'ChatGPT', 'Gemini'],
     architectureNodes: [
       { label: 'Document Upload', description: 'PDF parsing & chunking' },
       { label: 'Embedding Engine', description: 'HuggingFace all-MiniLM-L6-v2' },
@@ -106,6 +106,9 @@ export const projects: Project[] = [
       'Historical data analysis',
     ],
     category: 'ai',
+    demoUrl: 'https://ai-doc-assistant-your-deployment.vercel.app',
+    githubUrl: 'https://github.com/yourusername/ai-doc-assistant',
+    aiTools: ['Gemini', 'ChatGPT', 'Antigravity'],
     architectureNodes: [
       { label: 'Data Ingestion', description: 'Historical calibration data' },
       { label: 'Analysis Engine', description: 'Pattern recognition' },
@@ -123,6 +126,7 @@ export const projects: Project[] = [
 
 export const experience: Experience = {
   role: 'Software Developer',
+  company: 'Iviewsense',
   period: '2+ Years',
   achievements: [
     { text: 'Developed CalibMaster Enterprise SaaS Platform end-to-end', metric: 'Full product lifecycle' },
@@ -193,7 +197,7 @@ export const skillGroups: SkillGroup[] = [
       { name: 'RAG Architecture', projects: ['AI Doc Assistant'], level: 'intermediate' },
       { name: 'Vector Databases', projects: ['AI Doc Assistant'], level: 'intermediate' },
       { name: 'LangChain', projects: ['AI Calibration'], level: 'intermediate' },
-      { name: 'AI Agents', projects: ['Learning'], level: 'intermediate' },
+      { name: 'AI-Assisted Development', projects: ['All Projects'], level: 'advanced' },
     ],
   },
 ];
@@ -222,6 +226,33 @@ export const services: Service[] = [
     description: 'Deploy and manage applications on Azure cloud with monitoring, CI/CD, and production-grade infrastructure.',
     features: ['Azure App Services', 'PM2 process management', 'Linux server setup', 'Performance monitoring', 'Production troubleshooting'],
     icon: 'cloud',
+  },
+];
+
+export const aiToolkit: AITool[] = [
+  {
+    name: 'Google Gemini',
+    description: 'AI pair programming & complex problem solving',
+    icon: 'gemini',
+    color: '#4285F4',
+  },
+  {
+    name: 'ChatGPT',
+    description: 'Architecture design & code review',
+    icon: 'chatgpt',
+    color: '#10A37F',
+  },
+  {
+    name: 'Claude',
+    description: 'Deep analysis & documentation',
+    icon: 'claude',
+    color: '#D97757',
+  },
+  {
+    name: 'Antigravity',
+    description: 'AI-powered IDE for full-stack development',
+    icon: 'antigravity',
+    color: '#8B5CF6',
   },
 ];
 

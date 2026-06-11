@@ -1,8 +1,9 @@
 import { motion } from 'framer-motion';
+import type { ReactNode } from 'react';
 
 interface SectionHeaderProps {
   tag?: string;
-  title: string;
+  title: ReactNode;
   subtitle?: string;
   align?: 'left' | 'center';
 }

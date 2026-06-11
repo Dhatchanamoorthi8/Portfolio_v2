@@ -4,7 +4,7 @@ import ScrollReveal from '../../components/ScrollReveal';
 import GlassCard from '../../components/GlassCard';
 import TechBadge from '../../components/TechBadge';
 import { experience } from '../../data/portfolio';
-import { CheckCircle, TrendingUp } from 'lucide-react';
+import { CheckCircle, TrendingUp, Building2 } from 'lucide-react';
 
 export default function Experience() {
   return (
@@ -21,6 +21,10 @@ export default function Experience() {
             <div className="experience__header">
               <div>
                 <h3 className="experience__role">{experience.role}</h3>
+                <div className="experience__company">
+                  <Building2 size={16} />
+                  <span>{experience.company}</span>
+                </div>
                 <p className="experience__period">{experience.period} · Enterprise SaaS Development</p>
               </div>
               <div className="experience__badge">

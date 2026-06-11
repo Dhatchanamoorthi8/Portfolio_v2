@@ -10,6 +10,7 @@ export interface Project {
   githubUrl?: string;
   architectureNodes?: ArchNode[];
   metrics?: Metric[];
+  aiTools?: string[];
 }
 
 export interface ArchNode {
@@ -67,4 +68,11 @@ export interface ThemeConfig {
   accentHue: number;
   accentSaturation: number;
   fontSize: 'small' | 'medium' | 'large';
+}
+
+export interface AITool {
+  name: string;
+  description: string;
+  icon: string;
+  color: string;
 }

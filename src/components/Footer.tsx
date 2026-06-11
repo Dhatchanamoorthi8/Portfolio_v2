@@ -13,13 +13,13 @@ export default function Footer() {
           </div>
 
           <div className="footer__links">
-            <a href="mailto:your@email.com" aria-label="Email">
+            <a href="mailto:messagetomoorthi@gmail.com" aria-label="Email">
               <Mail size={18} />
             </a>
-            <a href="https://linkedin.com/in/yourprofile" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+            <a href="https://www.linkedin.com/in/dhatchanamoorthi-ap/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
               <Linkedin size={18} />
             </a>
-            <a href="https://github.com/yourprofile" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
+            <a href="https://github.com/Dhatchanamoorthi8" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
               <Github size={18} />
             </a>
           </div>
