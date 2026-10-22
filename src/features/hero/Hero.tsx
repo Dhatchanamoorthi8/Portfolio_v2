@@ -107,7 +107,7 @@ export default function Hero() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.6 }}
           >
-            Full Stack Developer at <strong>Iviewsense</strong> — specializing in scalable web applications, 
+            I'm <strong>Dhatchanamoorthi AP</strong>, Full Stack Developer at <strong>Iviewsense</strong> — specializing in scalable web applications, 
             workflow automation, cloud deployments, and AI-powered development.
           </motion.p>
 

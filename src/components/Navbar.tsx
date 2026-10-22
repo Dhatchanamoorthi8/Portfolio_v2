@@ -43,7 +43,7 @@ export default function Navbar() {
         <div className="navbar__inner">
           <button className="navbar__logo" onClick={() => scrollTo('hero')}>
             <span className="navbar__logo-icon">D</span>
-            <span className="navbar__logo-text">Dhatchana<span className="text-accent">.</span></span>
+            <span className="navbar__logo-text">Dhatchanamoorthi<span className="text-accent">.</span></span>
           </button>
 
           <div className="navbar__links">

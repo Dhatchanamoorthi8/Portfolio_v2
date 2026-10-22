@@ -8,7 +8,7 @@ export default function Footer() {
       <div className="container">
         <div className="footer__inner">
           <div className="footer__brand">
-            <span className="footer__logo">Dhatchana<span className="text-accent">.</span></span>
+            <span className="footer__logo">Dhatchanamoorthi<span className="text-accent">.</span></span>
             <p>Full Stack Developer · SaaS Builder · AI Engineer</p>
           </div>
 
@@ -26,7 +26,7 @@ export default function Footer() {
 
           <div className="footer__copy">
             <p>
-              © {currentYear} Dhatchana Moorthi AP. Built with{' '}
+              © {currentYear} Dhatchanamoorthi AP. Built with{' '}
               <Heart size={12} className="footer__heart" /> using React & TypeScript
             </p>
           </div>

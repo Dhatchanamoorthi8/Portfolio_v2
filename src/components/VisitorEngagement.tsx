@@ -11,7 +11,7 @@ type Message = {
 const INITIAL_MESSAGE: Message = {
   id: 'init',
   sender: 'ai',
-  text: "Hi! I'm Dhatchana's AI assistant. How can I help you explore his portfolio?",
+  text: "Hi! I'm Dhatchanamoorthi's AI assistant. How can I help you explore his portfolio?",
 };
 
 export default function VisitorEngagement() {
@@ -59,7 +59,7 @@ export default function VisitorEngagement() {
     switch (type) {
       case 'work':
         userText = 'Are you available for work?';
-        aiResponse = "Yes! Dhatchana is currently open for freelance and full-time roles. He specializes in Enterprise SaaS and AI integration.";
+        aiResponse = "Yes! Dhatchanamoorthi is currently open for freelance and full-time roles. He specializes in Enterprise SaaS and AI integration.";
         break;
       case 'stack':
         userText = "What's your core tech stack?";

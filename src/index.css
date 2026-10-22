@@ -358,6 +358,8 @@ button {
   gap: 10px;
   font-size: 1.1rem;
   font-weight: 700;
+  white-space: nowrap;
+  flex-shrink: 0;
 }
 
 .navbar__logo-icon {

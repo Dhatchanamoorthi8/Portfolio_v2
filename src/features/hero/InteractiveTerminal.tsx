@@ -8,7 +8,7 @@ interface TerminalLine {
 }
 
 const terminalScript: TerminalLine[] = [
-  { type: 'command', text: '> dhatchana --init enterprise-saas', delay: 0 },
+  { type: 'command', text: '> dhatchanamoorthi --init enterprise-saas', delay: 0 },
   { type: 'success', text: '✓ CalibMaster SaaS initialized', delay: 800 },
   { type: 'info', text: '  → React.js + NestJS + PostgreSQL', delay: 1200 },
   { type: 'command', text: '> ai.assist --tool gemini "Design RBAC module"', delay: 2200 },
@@ -100,7 +100,7 @@ export default function InteractiveTerminal() {
             <span />
             <span />
           </div>
-          <span className="interactive-terminal__title">dhatchana@portfolio:~</span>
+          <span className="interactive-terminal__title">dhatchanamoorthi@portfolio:~</span>
         </div>
         <div className="interactive-terminal__body" ref={bodyRef}>
           {lines.map((line, i) => (
